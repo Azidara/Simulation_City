@@ -51,4 +51,5 @@ If you are looking to get in contact with the  developers
 Developers
 
 -Albert Bode
+
 -Matt Caparoon
