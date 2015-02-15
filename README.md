@@ -41,8 +41,11 @@ Further information
 If you are looking to get in contact with the  developers
 
 -Email: WaywardGolem@gmail.com
+
 -Website: http://redgaurd.atwebpages.com/waywardgolem/index.html
+
 -Bug report: planned
+
 -Forums: planned
 
 Developers
