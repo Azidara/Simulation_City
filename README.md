@@ -40,7 +40,7 @@ Further information
 
 If you are looking to get in contact with the  developers
 
--Email: planned
+-Email: WaywardGolem@gmail.com
 -Website: planned
 -Bug report: planned
 -Forums: planned
@@ -48,4 +48,4 @@ If you are looking to get in contact with the  developers
 Developers
 
 -Albert Bode
--Matt Caperoon
+-Matt Caparoon
