@@ -22,7 +22,7 @@ void MainDraw();
 extern float resHeight;
 extern float resWidth;
 extern float aspect;
-extern int currentMenu;
+extern int currentScene;
 
 
 #endif /* defined(__SimulationCity__Initialization_Files__) */

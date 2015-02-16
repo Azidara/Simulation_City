@@ -30,33 +30,11 @@ float farClip = 10000.0;
 float resHeight = 480;
 float resWidth = 640;
 float aspect;
-int currentMenu;
+int currentScene;
 void makeCheckImage();
 GLubyte *texels;
 GLuint texName[NUM_TEXTURES];
 int width,height;
-
-//Keyboard callbacks
-void keyboard( unsigned char key, int x, int y ){
-	// Process keys
-	switch (key)
-	{
-		case 'q':
-			// exit program
-			exit (1);
-			break;
-		case 'h':
-			// change resoultion
-			resHeight -= 10;
-			break;
-		case 'H':
-			// change resoultion
-			resHeight += 10;
-			break;
-	}
-	glutReshapeWindow( resWidth, resHeight );
-	glutPostRedisplay();
-}
 
 // Mouse press callback
 void mousePress( int button, int state, int x, int y )
@@ -116,7 +94,7 @@ void mousePress( int button, int state, int x, int y )
 			
 		}
 		else if (hits > 0 && (selectBuffer[3] == optionbutton)){
-			currentMenu = 2;
+			currentScene = 2;
 		}
 		else if (hits > 0 && (selectBuffer[3] == changelogbutton)){
 
@@ -125,7 +103,7 @@ void mousePress( int button, int state, int x, int y )
 			exit(1);
 		}
 		else if (hits > 0 && (selectBuffer[3] == resolutionbutton)){
-			currentMenu = 1;
+			currentScene = 1;
 		}
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glutPostRedisplay();
@@ -153,14 +131,11 @@ int main(int argc, char** argv)
 	glutInit( &argc, argv );
 	glutInitDisplayMode( GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH );
 	glutInitWindowSize( resWidth, resHeight );
-	glutCreateWindow( "Simcity Project" );
+	glutCreateWindow( "Simulation City Project" );
 	
 	myInit();
 	
 	glutDisplayFunc( MainDraw );
-	
-	// Input callbacks
-	glutKeyboardFunc( keyboard );
 	
 	// Mouse press callback
 	glutMouseFunc( mousePress );

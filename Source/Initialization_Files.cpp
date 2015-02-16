@@ -24,6 +24,49 @@ using namespace std;
 #define BUFSIZE 512
 GLuint selectBuf[BUFSIZE];
 
+//Keyboard callbacks
+void Menukeyboard( unsigned char key, int x, int y ){
+	// Process keys
+	switch (key)
+	{
+		case 'q':
+			// exit program
+			exit (1);
+			break;
+		case 'h':
+			// change resoultion
+			resHeight -= 10;
+			break;
+		case 'H':
+			// change resoultion
+			resHeight += 10;
+			break;
+	}
+	glutReshapeWindow( resWidth, resHeight );
+	glutPostRedisplay();
+}
+
+void foo( unsigned char key, int x, int y){
+	// Process keys
+	switch (key)
+	{
+		case 'k':
+			// exit program
+			exit (1);
+			break;
+		case 'u':
+			// change resoultion
+			resHeight -= 10;
+			break;
+		case 'U':
+			// change resoultion
+			resHeight += 10;
+			break;
+	}
+	glutReshapeWindow( resWidth, resHeight );
+	glutPostRedisplay();
+}
+
 extern objects::customButton start,option,changelog,quit;
 void myInit()
 {
@@ -35,7 +78,7 @@ void myInit()
 	changelog.readFile(1);
 	quit.readFile(1);
 	
-	currentMenu = 1;
+	currentScene = 1;
 	
 	aspect = resHeight/resWidth;
 	
@@ -64,12 +107,18 @@ void myInit()
 }
 
 void MainDraw(){
-	switch (currentMenu){
+	switch (currentScene){
 		case 1:
 			MainMenuDraw();
+			
+			// Input callbacks
+			glutKeyboardFunc( Menukeyboard );
 			break;
 		case 2:
 			OptionsMenuDraw();
+			
+			// Input callbacks
+			glutKeyboardFunc( Menukeyboard );
 			break;
 	}
 }
