@@ -1,7 +1,7 @@
 About
 -----
 
-Simulation City was created to be a SimCity esque game for possible release as a commecial product.
+Simulation City was created to be a SimCity-esque game for possible release as a commecial product.
 
 
 Platforms
