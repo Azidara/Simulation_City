@@ -1,7 +1,7 @@
 About
 -----
 
-Simulation City was created to be a SimCity esc. game for possible release as a commecial product.
+Simulation City was created to be a SimCity-esque game for possible release as a commecial product.
 
 
 Platforms
@@ -41,11 +41,15 @@ Further information
 If you are looking to get in contact with the  developers
 
 -Email: WaywardGolem@gmail.com
--Website: planned
+
+-Website: http://redgaurd.atwebpages.com/waywardgolem/index.html
+
 -Bug report: planned
+
 -Forums: planned
 
 Developers
 
 -Albert Bode
+
 -Matt Caparoon

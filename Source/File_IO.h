@@ -9,5 +9,10 @@
 #ifndef SimulationCity_Global_Varibles_h
 #define SimulationCity_Global_Varibles_h
 
+#include <stdio.h>
+
+using namespace std;
+
+string findPath(char *argv);
 
 #endif

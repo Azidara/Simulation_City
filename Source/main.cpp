@@ -16,6 +16,7 @@
 #  include <GL/glut.h>
 #endif
 
+#include "File_IO.h"
 #include "Initialization_Files.h"
 #include "Objects.h"
 #include "MenuDrawFuncs.h"
@@ -31,6 +32,7 @@ float resHeight = 480;
 float resWidth = 640;
 float aspect;
 int currentScene;
+string localPath;
 void makeCheckImage();
 GLubyte *texels;
 GLuint texName[NUM_TEXTURES];
@@ -41,57 +43,57 @@ void mousePress( int button, int state, int x, int y )
 {
 	GLfloat inputX = x;
 	GLfloat inputY = y;
-	
+
 	// Pick objects if left button down
 	if( button == GLUT_LEFT_BUTTON && state == GLUT_DOWN ){
-		
+
 		GLuint selectBuffer[ SELECT_BUFSIZE ];     // selections
 		GLuint *ptr, names;
 		int hits, i, j;
-		
+
 		// Viewport information
 		GLint viewport[4];
 		glGetIntegerv( GL_VIEWPORT, viewport );
-	 
+
 		// Selection mode
 		glSelectBuffer( SELECT_BUFSIZE, selectBuffer );
 		glRenderMode( GL_SELECT );
-	 
+
 		// Initialize name stack
 		glInitNames();
 		glPushName(-1);
-	 
+
 		// Save transformation matrix
 		glMatrixMode( GL_MODELVIEW );
 		glPushMatrix();
-	 
+
 		// Save original projection (viewing volume)
 		glMatrixMode( GL_PROJECTION );
 		glPushMatrix();
-	 
+
 		// New picking viewing volume (area == 5 pixels)
 		glLoadIdentity();
 		gluPickMatrix ( GLdouble( inputX ),GLdouble( viewport[3] - inputY ),5.0, 5.0, viewport);
 		gluPerspective( fov, aspect, nearClip, farClip );
-	 
+
 		// Draw scene
 		MainDraw();
-	 
+
 		// Restore original projection (viewing volume)
 		glMatrixMode( GL_PROJECTION );
 		glPopMatrix();
-	 
+
 		// Restore original modelview matrix
 		glMatrixMode( GL_MODELVIEW );
 		glPopMatrix();
-	 
+
 		// Swap buffers
 		//glutSwapBuffers();
-	 
+
 		// End select mode
 		hits = glRenderMode( GL_RENDER );
 		if (hits != 0 && (selectBuffer[3] == startbutton)){
-			
+
 		}
 		else if (hits > 0 && (selectBuffer[3] == optionbutton)){
 			currentScene = 2;
@@ -125,27 +127,30 @@ void menu( int value )
 	glutPostRedisplay();
 }
 
-int main(int argc, char** argv)
+int main(int argc, char ** argv)
 {
+	findPath( argv[0] ) = localPath;
+
 	// Initialize window system
 	glutInit( &argc, argv );
 	glutInitDisplayMode( GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH );
 	glutInitWindowSize( resWidth, resHeight );
+
 	glutCreateWindow( "Simulation City Project" );
 	
 	myInit();
-	
+
 	glutDisplayFunc( MainDraw );
-	
+
 	// Mouse press callback
 	glutMouseFunc( mousePress );
-	
+
 	// Main menu
 	glutCreateMenu( menu );
 	glutAddMenuEntry( "Quit", 1 );
 	glutAttachMenu( GLUT_RIGHT_BUTTON );
-	
+
 	//Main event loop
 	glutMainLoop();
-	
+
 }

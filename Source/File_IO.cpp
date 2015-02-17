@@ -16,6 +16,20 @@
 
 #include "Objects.h"
 
+string findPath(char *argv){
+
+    string ExePath(argv);
+
+    //cout << "ExePath is " << ExePath << endl;
+
+    while ((ExePath.size() > 0) && ((ExePath[ExePath.size()-1]!='\\') && (ExePath[ExePath.size()-1]!='/'))) {
+            ExePath.resize(ExePath.size()-1);
+
+    //cout << "ExePath is " << ExePath << endl;
+    }
+
+    return ExePath;
+}
 
 void objects::customButton::readFile(int id){
 	fstream in;
@@ -30,12 +44,12 @@ void objects::customButton::readFile(int id){
 	}
 	// Read and store the points
 	string testtype;
-	
+
 	GlutPt3D temp;
-	
+
 	while ( in.eof() == false ){
 		in >> testtype;
-		
+
 		if ( testtype == "v" ){
 			in >> temp.x;
 			in >> temp.y;
@@ -48,7 +62,7 @@ void objects::customButton::readFile(int id){
 }
 
 void objects::customButton::readTexture(int id){
-	
+
 }
 
 void objects::customButton::drawObject(float x, float y, float z, int name){
